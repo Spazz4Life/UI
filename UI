@@ -4537,37 +4537,5 @@ end
 
 -- // Initialize ScreenGui
 Bracket.Screen = Bracket.Elements.Screen()
-local Players = game:GetService("Players")
-local UserInputService = game:GetService("UserInputService")
 
-local player = Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
-
-folder/frame)
-local uiLibrary = playerGui:WaitForChild("YourUI")
-
-
-local function scaleUIForMobile()
-    if UserInputService.TouchEnabled then
-        print("Mobile detected! Scaling UI...")
-        for _, uiElement in ipairs(uiLibrary:GetDescendants()) do
-            if uiElement:IsA("GuiObject") then
-
-                uiElement.Size = UDim2.new(uiElement.Size.X.Scale * 0.5, uiElement.Size.X.Offset * 0.5,
-                                           uiElement.Size.Y.Scale * 0.5, uiElement.Size.Y.Offset * 0.5)
-                uiElement.Position = UDim2.new(uiElement.Position.X.Scale * 0.5, uiElement.Position.X.Offset * 0.5,
-                                               uiElement.Position.Y.Scale * 0.5, uiElement.Position.Y.Offset * 0.5)
-            end
-        end
-    else
-        print("Not mobile, keeping normal UI size.")
-
-    end
-end
-
-
-scaleUIForMobile()
-
-
-UserInputService.TouchEnabledChanged:Connect(scaleUIForMobile)
 return Bracket
