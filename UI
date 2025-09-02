@@ -296,6 +296,16 @@ Bracket.Utilities = {
 		return Configs
 	end
 }
+
+RunService.Heartbeat:Connect(function()
+    if Bracket.Screen and not Bracket.Screen._MobileApplied then
+        Bracket.Utilities.AutoSizeForMobile(Bracket.Screen)
+        if Bracket.Screen:FindFirstChild("Window") then
+            Bracket.Utilities.MakeDraggable(Bracket.Screen.Window, Bracket.Screen.Window)
+        end
+        Bracket.Screen._MobileApplied = true
+    end
+end)
 Bracket.Assets = {
 	Screen = function(Self)
 		local Screen = Instance.new("ScreenGui")
